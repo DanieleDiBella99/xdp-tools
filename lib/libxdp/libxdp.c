@@ -1599,6 +1599,10 @@ static int xdp_program__load(struct xdp_program *prog)
 	return xdp_program__fill_from_fd(prog, bpf_program__fd(prog->bpf_prog));
 }
 
+int xdp_program__load_prog(struct xdp_program *prog) {
+	return xdp_program__load(prog);
+}
+
 struct xdp_program *xdp_program__clone(struct xdp_program *prog, unsigned int flags)
 {
 	if (IS_ERR_OR_NULL(prog) || flags || (prog->prog_fd < 0 && !prog->bpf_obj))
